@@ -1,6 +1,6 @@
 import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
-import Layout from "./Layout/Layout";
+import Layout from "../Layout/Layout";
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
 const MovieDetailsPage = lazy(() =>
   import("../../pages/MovieDetailsPage/MovieDetailsPage")
@@ -11,7 +11,9 @@ const MovieReviews = lazy(() =>
   import("../../components/MovieReviews/MovieReviews")
 );
 
-const NotFoundPage = lazy(() => import("../pages/NotFoundPage/NotFoundPage"));
+const NotFoundPage = lazy(() =>
+  import("../../pages/NotFoundPage/NotFoundPage")
+);
 
 import "./App.css";
 
