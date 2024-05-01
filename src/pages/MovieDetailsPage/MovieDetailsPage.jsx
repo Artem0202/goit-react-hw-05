@@ -14,6 +14,9 @@ export default function MovieDetailsPage() {
   const location = useLocation();
   const backLinkURLRef = useRef(location.state ?? "/movies");
 
+  const defaultImg =
+    "https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg";
+
   useEffect(() => {
     async function fetchPayment() {
       try {
@@ -40,9 +43,13 @@ export default function MovieDetailsPage() {
       {movie && (
         <div className={css.descr}>
           <img
-            src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
+            src={
+              movie.poster_path
+                ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                : defaultImg
+            }
             alt={movie.title}
-            width="300"
+            width="250"
           />
           <div className={css.info}>
             <h2>{movie.title + " (" + movie.release_date.slice(0, 4) + ")"}</h2>
