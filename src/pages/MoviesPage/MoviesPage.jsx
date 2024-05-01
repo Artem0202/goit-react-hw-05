@@ -31,7 +31,6 @@ export default function MoviesPage() {
         setLoading(true);
         const data = await getMoviesSearch(searchParam);
         setMovies(data);
-        console.log(data);
       } catch (error) {
         setError(true);
       } finally {
@@ -48,7 +47,11 @@ export default function MoviesPage() {
       {error && <ErrorMessage />}
 
       {loading && <b>Loading movies...</b>}
-      {Object.keys(movies).length > 0 && <MovieList movies={movies} />}
+      {Object.keys(movies).length > 0 ? (
+        <MovieList movies={movies} />
+      ) : (
+        <p>Is not found</p>
+      )}
     </div>
   );
 }

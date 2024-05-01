@@ -29,9 +29,8 @@ export default function MovieCast() {
       </p>
 
       {error && <ErrorMessage />}
-      {!movie && <p>We dont have info about this movie</p>}
 
-      {movie && (
+      {movie ? (
         <div>
           <ul>
             {movie.cast.map((movieInfo) => (
@@ -49,6 +48,8 @@ export default function MovieCast() {
             ))}
           </ul>
         </div>
+      ) : (
+        <p>We dont have info about this movie</p>
       )}
     </div>
   );

@@ -29,9 +29,8 @@ export default function MovieReviews() {
       </p>
 
       {error && <ErrorMessage />}
-      {movie && <p>We dont have reviews about this movie</p>}
 
-      {movie && (
+      {movie ? (
         <div>
           <ul>
             {movie.results.map((movieInfo) => (
@@ -42,6 +41,8 @@ export default function MovieReviews() {
             ))}
           </ul>
         </div>
+      ) : (
+        <p>We dont have reviews about this movie</p>
       )}
     </div>
   );
