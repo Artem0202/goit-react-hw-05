@@ -4,6 +4,7 @@ import MovieList from "../../components/MovieList/MovieList";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import { getMoviesSearch } from "../../movies-api";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import css from "./MoviesPage.module.css";
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
@@ -30,6 +31,7 @@ export default function MoviesPage() {
         setLoading(true);
         const data = await getMoviesSearch(searchParam);
         setMovies(data);
+        console.log(data);
       } catch (error) {
         setError(true);
       } finally {
@@ -41,11 +43,11 @@ export default function MoviesPage() {
   }, [searchParams, searchParam]);
 
   return (
-    <div>
+    <div className={css.conteiner}>
       <SearchBar onSearch={handleSearch} />
       {error && <ErrorMessage />}
 
-      {loading && <b>Loading payments...</b>}
+      {loading && <b>Loading movies...</b>}
       {Object.keys(movies).length > 0 && <MovieList movies={movies} />}
     </div>
   );

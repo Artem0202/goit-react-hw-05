@@ -2,6 +2,7 @@ import MovieList from "../../components/MovieList/MovieList";
 import { getMovies } from "../../movies-api";
 import { useEffect, useState } from "react";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import css from "./HomePage.module.css";
 
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
@@ -24,9 +25,9 @@ export default function HomePage() {
     fetchMovies();
   }, []);
   return (
-    <div>
-      <h2>Trending today</h2>
-      {loading && <b>Loading payments...</b>}
+    <div className={css.list}>
+      <h2 className={css.title}>Trending today</h2>
+      {loading && <b>Loading movies...</b>}
       {error && <ErrorMessage />}
       {Object.keys(movies).length > 0 && <MovieList movies={movies} />}
     </div>

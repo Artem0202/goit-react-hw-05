@@ -7,7 +7,7 @@ const notify = () => toast.error("Please fill in the field!");
 
 export default function SearchBar({ onSearch }) {
   return (
-    <header className={css.header}>
+    <div className={css.search}>
       <Toaster position="top-right" reverseOrder={false} />
       <Formik
         initialValues={{ query: "" }}
@@ -30,11 +30,11 @@ export default function SearchBar({ onSearch }) {
               placeholder="Search movies"
             />
             <button className={css.button} type="submit">
-              <IoIosSearch />
+              <IoIosSearch /> Search
             </button>
           </div>
         </Form>
       </Formik>
-    </header>
+    </div>
   );
 }
