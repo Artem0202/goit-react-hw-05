@@ -6,7 +6,7 @@ export default function MovieList({ movies }) {
 
   return (
     <ul className={css.list}>
-      {movies.results.map((movie) => (
+      {movies.map((movie) => (
         <li key={movie.id}>
           <Link to={`/movies/${movie.id}`} state={location}>
             {movie.title}

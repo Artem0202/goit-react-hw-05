@@ -22,7 +22,7 @@ export default function MoviesPage() {
   };
 
   useEffect(() => {
-    if (searchParams === "") {
+    if (searchParam === "") {
       return;
     }
     async function fetchMovies() {
@@ -30,7 +30,7 @@ export default function MoviesPage() {
         setError(false);
         setLoading(true);
         const data = await getMoviesSearch(searchParam);
-        setMovies(data);
+        setMovies(data.results);
       } catch (error) {
         setError(true);
       } finally {
@@ -39,7 +39,7 @@ export default function MoviesPage() {
     }
 
     fetchMovies();
-  }, [searchParams, searchParam]);
+  }, [searchParam]);
 
   return (
     <div className={css.conteiner}>
@@ -47,11 +47,7 @@ export default function MoviesPage() {
       {error && <ErrorMessage />}
 
       {loading && <b>Loading movies...</b>}
-      {Object.keys(movies).length > 0 ? (
-        <MovieList movies={movies} />
-      ) : (
-        <p>Is not found</p>
-      )}
+      {movies.length > 0 && <MovieList movies={movies} />}
     </div>
   );
 }

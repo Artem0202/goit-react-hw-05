@@ -14,7 +14,7 @@ export default function HomePage() {
       try {
         setLoading(true);
         const data = await getMovies();
-        setMovies(data);
+        setMovies(data.results);
       } catch (error) {
         setError(true);
       } finally {
@@ -29,7 +29,7 @@ export default function HomePage() {
       <h2 className={css.title}>Trending today</h2>
       {loading && <b>Loading movies...</b>}
       {error && <ErrorMessage />}
-      {Object.keys(movies).length > 0 && <MovieList movies={movies} />}
+      {movies.length > 0 && <MovieList movies={movies} />}
     </div>
   );
 }
